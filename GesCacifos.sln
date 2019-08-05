@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GesCacifos", "GesCacifos\GesCacifos.csproj", "{1FD06244-12A4-4D90-9AF6-194EFE15D665}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GesCacifosSetup", "GesCacifosSetup\GesCacifosSetup.vdproj", "{CC8A75B0-8B2E-42C4-8990-134C67150408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{1FD06244-12A4-4D90-9AF6-194EFE15D665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD06244-12A4-4D90-9AF6-194EFE15D665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD06244-12A4-4D90-9AF6-194EFE15D665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8A75B0-8B2E-42C4-8990-134C67150408}.Debug|Any CPU.ActiveCfg = Debug
+		{CC8A75B0-8B2E-42C4-8990-134C67150408}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
