@@ -49,7 +49,8 @@ namespace GesCacifos
             //textBox2.Text = "";
             SerialPort sp = (SerialPort)sender;
             indata = sp.ReadLine();
-            this.Invoke(new EventHandler(displayText));
+            if (indata != "0")
+                this.Invoke(new EventHandler(displayText));
 
         }
         private void displayText(object o, EventArgs e)
