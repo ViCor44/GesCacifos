@@ -18,6 +18,8 @@ namespace GesCacifos
         public VerificarFaltas()
         {
             InitializeComponent();
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
         }
 
         private void VerificarFaltas_Load(object sender, EventArgs e)
@@ -34,7 +36,8 @@ namespace GesCacifos
             {
                 serialPort1.PortName = comboBox1.Text;
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-                serialPort1.Open();
+                serialPort1.Open();                
+                button1.Focus();
             }
             catch (Exception ex)
             {
@@ -46,12 +49,18 @@ namespace GesCacifos
         string indata;
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            //textBox2.Text = "";
-            SerialPort sp = (SerialPort)sender;
+            try
+            {
+                //textBox2.Text = "";
+                SerialPort sp = (SerialPort)sender;
             indata = sp.ReadLine();
             if (indata != "0")
                 this.Invoke(new EventHandler(displayText));
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void displayText(object o, EventArgs e)
         {
@@ -88,7 +97,9 @@ namespace GesCacifos
         private void VerificarFaltas_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (serialPort1.IsOpen)
-                serialPort1.Close();
+            {                             
+                serialPort1.Close();                
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

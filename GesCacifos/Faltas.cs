@@ -15,10 +15,12 @@ namespace GesCacifos
         public Faltas()
         {
             InitializeComponent();
+            button1.Select();
         }
 
         private void Faltas_Load(object sender, EventArgs e)
         {
+            
             int count = 0;
             for(int i = 1; i < VerificarFaltas.vetor.Length; i++)
             {
@@ -31,7 +33,7 @@ namespace GesCacifos
             }
             textBox1.AppendText("\n");
             textBox1.AppendText("\n");
-            textBox1.AppendText("Faltam: " + count + " pulseiras");
+            textBox1.AppendText("Faltam: " + count + " pulseiras");            
         }
 
         private void button1_Click(object sender, EventArgs e)

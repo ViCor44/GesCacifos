@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h>
-
+#define LEDPIN 11
 String readString;
 int flag=0,RX_Flag=0;//serial port sign
 int i=0;
@@ -13,6 +13,8 @@ void setup() {
   Serial.begin(9600);
   rfid.begin(9600);
   //Serial.println("Sistema de contagem de pulseiras");
+  pinMode(LEDPIN, OUTPUT);
+  digitalWrite(LEDPIN, HIGH);
 }
 long Read_ID(){   
   char temp;
@@ -57,7 +59,6 @@ long Read_ID(){
   //delay(6000);
   return Num;    
 }
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop() {  
   Read_ID();
 }
