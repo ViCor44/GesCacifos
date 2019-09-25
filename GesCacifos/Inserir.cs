@@ -18,6 +18,9 @@ namespace GesCacifos
         public Inserir()
         {
             InitializeComponent();
+            textBox1.MaxLength = 3;
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
         }
 
         private void Inserir_Load(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace GesCacifos
         private void button2_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
+            textBox1.Enabled = true;
             try
             {
                 serialPort1.PortName = comboBox1.Text;
@@ -73,7 +77,10 @@ namespace GesCacifos
             {
                 SerialPort sp = (SerialPort)sender;
                 indata = sp.ReadLine();
-                this.Invoke(new EventHandler(displayText));
+                if (indata != "0")
+                {
+                    this.Invoke(new EventHandler(displayText));                    
+                }
             }
             catch (Exception ex)
             {
@@ -86,7 +93,7 @@ namespace GesCacifos
         {
             textBox2.Text = " ";
             textBox2.AppendText(indata);
-
+            textBox1.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,9 +112,9 @@ namespace GesCacifos
                 int i = cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 if (i != 0)
-                    MessageBox.Show("Inserida com sucesso");
+                    MessageBox.Show("INSERIDA COM SUCESSO!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 else
-                    MessageBox.Show("Erro ao inserir");
+                    MessageBox.Show("Erro ao inserir", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 con.Close();
                 textBox1.Text = "";
                 textBox2.Text = "";
@@ -118,10 +125,20 @@ namespace GesCacifos
             }
         }
 
+        
         private void button3_Click(object sender, EventArgs e)
         {
             FaltaInserir frm = new FaltaInserir();
             frm.ShowDialog();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Só numeros são aceites!");
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
         }
     }
 }

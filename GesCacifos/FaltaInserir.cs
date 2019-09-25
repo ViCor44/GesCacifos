@@ -15,6 +15,7 @@ namespace GesCacifos
         public FaltaInserir()
         {
             InitializeComponent();
+            button1.Select();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

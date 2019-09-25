@@ -16,17 +16,17 @@ namespace GesCacifos
         {
             InitializeComponent();
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            Inserir frm = new Inserir();
-            frm.Show();
+            Inserir frmIns = new Inserir();
+            frmIns.Show();
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
-            VerificarFaltas frm = new VerificarFaltas();
-            frm.Show();
+            VerificarFaltas frmVer = new VerificarFaltas();
+            frmVer.Show();
         }
     }
 }
